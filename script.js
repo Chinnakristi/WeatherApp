@@ -53,7 +53,8 @@ const villages = {
 
 
 const select = document.getElementById("villageSelect");
-for (let name in villages) {
+for (let name in villages) 
+{
   let option = document.createElement("option");
   option.value = name;
   option.textContent = name;
@@ -62,7 +63,8 @@ for (let name in villages) {
 
 document.getElementById("searchBtn").addEventListener("click", () => {
   const villageName = select.value;
-  if (villageName === "-- Select Village --") {
+  if (villageName === "-- Select Village --") 
+  {
     alert("Please select a village!");
     return;
   }
@@ -70,15 +72,17 @@ document.getElementById("searchBtn").addEventListener("click", () => {
   getWeather(lat, lon);
 });
 
-function getWeather(lat, lon) {
+function getWeather(lat, lon) 
+{
   fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`)
     .then(res => res.json())
     .then(data => {
-      if (data.cod !== 200) {
+      if (data.cod !== 200) 
+      {
         document.getElementById("result").innerText = "Weather data not found!";
         return;
       }
-      document.getElementById("result").innerHTML = `
+      document.getElementById("result").innerHTML = 
         <h3>${data.name}</h3>
         <p>🌡️ Temperature: ${data.main.temp} °C</p>
         <p>💧 Humidity: ${data.main.humidity}%</p>
