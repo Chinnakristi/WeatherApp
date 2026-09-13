@@ -1,6 +1,4 @@
-
 const apiKey = "0c43933b62ea77bc0d5e41b719e32810"; 
-
 const villages = {
   "Diwancheruvu": {lat:16.99, lon:81.79},
   "Rajahmundry": {lat:16.98, lon:81.78},
@@ -54,7 +52,6 @@ const villages = {
 };
 
 
-// Dropdown fill
 const select = document.getElementById("villageSelect");
 for (let name in villages) {
   let option = document.createElement("option");
@@ -63,7 +60,6 @@ for (let name in villages) {
   select.appendChild(option);
 }
 
-// Search button
 document.getElementById("searchBtn").addEventListener("click", () => {
   const villageName = select.value;
   if (villageName === "-- Select Village --") {
@@ -74,7 +70,6 @@ document.getElementById("searchBtn").addEventListener("click", () => {
   getWeather(lat, lon);
 });
 
-//getweather 
 function getWeather(lat, lon) {
   fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`)
     .then(res => res.json())
@@ -89,7 +84,7 @@ function getWeather(lat, lon) {
         <p>💧 Humidity: ${data.main.humidity}%</p>
         <p>☁️ Condition: ${data.weather[0].description}</p>
         <p>🌬️ Wind Speed: ${data.wind.speed} m/s</p>
-      `;
+      ;
     })
     .catch(err => console.error(err));
 }
